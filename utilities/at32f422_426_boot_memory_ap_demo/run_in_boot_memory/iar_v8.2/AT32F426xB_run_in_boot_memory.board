@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flash_board>
+    <pass>
+        <loader>$TOOLKIT_DIR$\config\flashloader\ArteryTek\AT32F426\AT32F426CBT7\FlashAT32F426CBT7.flash</loader>
+        <range>CODE 0x8000000 0x801ffff</range>
+    </pass>
+    <pass>
+        <loader>$TOOLKIT_DIR$\config\flashloader\ArteryTek\AT32F426\AT32F426_BOOTMEM_AP\FlashAT32F426_BOOTMEM_AP.flash</loader>
+        <range>CODE 0x1fff8000 0x1fffefff</range>
+    </pass>
+</flash_board>
