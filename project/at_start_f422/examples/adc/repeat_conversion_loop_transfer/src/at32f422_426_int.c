@@ -3,7 +3,8 @@
   * @file     at32f422_426_int.c
   * @brief    main interrupt service routines.
   **************************************************************************
-  *                       Copyright notice & Disclaimer
+  *
+  * Copyright (c) 2025, Artery Technology, All rights reserved.
   *
   * The software Board Support Package (BSP) that is made available to
   * download from Artery official website is the copyrighted work of Artery.
@@ -24,13 +25,6 @@
 
 /* includes ------------------------------------------------------------------*/
 #include "at32f422_426_int.h"
-#include "at32f422_426_board.h"
-
-#define DMA_BUFFER_SIZE                  3
-
-extern __IO uint16_t dma_trans_complete_flag;
-extern __IO uint32_t adc1_overflow_flag;
-extern __IO uint32_t adc1_conversion_fail_flag;
 
 /** @addtogroup AT32F422_periph_examples
   * @{
@@ -136,55 +130,6 @@ void PendSV_Handler(void)
 void SysTick_Handler(void)
 {
 }
-
-/**
-  * @brief  this function handles dma1_channel1 handler.
-  * @param  none
-  * @retval none
-  */
-void DMA1_Channel1_IRQHandler(void)
-{
-  if(dma_interrupt_flag_get(DMA1_FDT1_FLAG) != RESET)
-  {
-    dma_flag_clear(DMA1_FDT1_FLAG);
-    dma_trans_complete_flag++;
-  }
-}
-
-/**
-  * @brief  this function handles adc handler.
-  * @param  none
-  * @retval none
-  */
-void ADC1_CMP_IRQHandler(void)
-{
-  if(adc_interrupt_flag_get(ADC1, ADC_TCF_FLAG) != RESET)
-  {
-    adc_flag_clear(ADC1, ADC_TCF_FLAG);
-    adc1_conversion_fail_flag++;
-		
-    /* convert fail recovery process,ensure data accuracy */
-    dma_channel_enable(DMA1_CHANNEL1, FALSE);
-    dma_flag_clear(DMA1_FDT1_FLAG);
-    dma_data_number_set(DMA1_CHANNEL1, DMA_BUFFER_SIZE);
-    dma_channel_enable(DMA1_CHANNEL1, TRUE);
-  }
-	
-  if(adc_interrupt_flag_get(ADC1, ADC_OCCO_FLAG) != RESET)
-  {
-    adc_flag_clear(ADC1, ADC_OCCO_FLAG);
-    adc1_overflow_flag++;
-		
-    /* overflow recovery process,ensure data accuracy */
-    adc_enable(ADC1, FALSE);
-    dma_channel_enable(DMA1_CHANNEL1, FALSE);
-    dma_flag_clear(DMA1_FDT1_FLAG);
-    dma_data_number_set(DMA1_CHANNEL1, DMA_BUFFER_SIZE);
-    dma_channel_enable(DMA1_CHANNEL1, TRUE);
-    adc_enable(ADC1, TRUE);
-  }
-}
-
 
 /**
   * @}

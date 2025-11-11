@@ -3,7 +3,8 @@
   * @file     at32f422_426.h
   * @brief    at32f422_426 header file
   **************************************************************************
-  *                       Copyright notice & Disclaimer
+  *
+  * Copyright (c) 2025, Artery Technology, All rights reserved.
   *
   * The software Board Support Package (BSP) that is made available to
   * download from Artery official website is the copyrighted work of Artery.
@@ -57,7 +58,9 @@ extern "C" {
     !defined (AT32F426CBT7)   && !defined (AT32F426C8T7)   && !defined (AT32F426KBT7)   && \
     !defined (AT32F426K8T7)   && !defined (AT32F426KBU7)   && !defined (AT32F426K8U7)   && \
     !defined (AT32F426KBU7_4) && !defined (AT32F426K8U7_4) && !defined (AT32F426GBU7_4) && \
-    !defined (AT32F426G8U7_4) && !defined (AT32F426FBP7)   && !defined (AT32F426F8P7)
+    !defined (AT32F426G8U7_4) && !defined (AT32F426FBP7)   && !defined (AT32F426F8P7)   && \
+    !defined (AT32F422CBU7)   && !defined (AT32F422C8U7)   && !defined (AT32F426CBU7)   && \
+    !defined (AT32F426C8U7)
 
     #error "Please select first the target device used in your application (in at32f422_426.h file)"
 #endif
@@ -65,7 +68,8 @@ extern "C" {
 #if defined (AT32F422CBT7)   || defined (AT32F422C8T7)   || defined (AT32F422KBT7)   || \
     defined (AT32F422K8T7)   || defined (AT32F422KBU7)   || defined (AT32F422K8U7)   || \
     defined (AT32F422KBU7_4) || defined (AT32F422K8U7_4) || defined (AT32F422GBU7_4) || \
-    defined (AT32F422G8U7_4) || defined (AT32F422FBP7)   || defined (AT32F422F8P7)
+    defined (AT32F422G8U7_4) || defined (AT32F422FBP7)   || defined (AT32F422F8P7)   || \
+    defined (AT32F422CBU7)   || defined (AT32F422C8U7)
 
     #define AT32F422xx
 #endif
@@ -73,7 +77,8 @@ extern "C" {
 #if defined (AT32F426CBT7)   || defined (AT32F426C8T7)   || defined (AT32F426KBT7)   || \
     defined (AT32F426K8T7)   || defined (AT32F426KBU7)   || defined (AT32F426K8U7)   || \
     defined (AT32F426KBU7_4) || defined (AT32F426K8U7_4) || defined (AT32F426GBU7_4) || \
-    defined (AT32F426G8U7_4) || defined (AT32F426FBP7)   || defined (AT32F426F8P7)
+    defined (AT32F426G8U7_4) || defined (AT32F426FBP7)   || defined (AT32F426F8P7)   || \
+    defined (AT32F426CBU7)   || defined (AT32F426C8U7)
 
     #define AT32F426xx
 #endif
@@ -81,7 +86,8 @@ extern "C" {
 /**
   * define with package
   */
-#if defined (AT32F422CBT7) || defined (AT32F422C8T7)
+#if defined (AT32F422CBT7) || defined (AT32F422C8T7)   || defined (AT32F422CBU7)   || \
+    defined (AT32F422C8U7)
 
     #define AT32F422Cx
 #endif
@@ -102,7 +108,8 @@ extern "C" {
     #define AT32F422Fx
 #endif
 
-#if defined (AT32F426CBT7) || defined (AT32F426C8T7)
+#if defined (AT32F426CBT7) || defined (AT32F426C8T7)   || defined (AT32F426CBU7)   || \
+    defined (AT32F426C8U7)
 
     #define AT32F426Cx
 #endif
@@ -127,25 +134,29 @@ extern "C" {
   * define with memory density
   */
 #if defined (AT32F422CBT7)   || defined (AT32F422KBT7)   || defined (AT32F422KBU7) || \
-    defined (AT32F422KBU7_4) || defined (AT32F422GBU7_4) || defined (AT32F422FBP7)
+    defined (AT32F422KBU7_4) || defined (AT32F422GBU7_4) || defined (AT32F422FBP7) || \
+    defined (AT32F422CBU7)
 
     #define AT32F422xB
 #endif
 
 #if defined (AT32F422C8T7)   || defined (AT32F422K8T7)   || defined (AT32F422K8U7) || \
-    defined (AT32F422K8U7_4) || defined (AT32F422G8U7_4) || defined (AT32F422F8P7)
+    defined (AT32F422K8U7_4) || defined (AT32F422G8U7_4) || defined (AT32F422F8P7) || \
+    defined (AT32F422C8U7)
 
     #define AT32F422x8
 #endif
 
 #if defined (AT32F426CBT7)   || defined (AT32F426KBT7)   || defined (AT32F426KBU7) || \
-    defined (AT32F426KBU7_4) || defined (AT32F426GBU7_4) || defined (AT32F426FBP7)
+    defined (AT32F426KBU7_4) || defined (AT32F426GBU7_4) || defined (AT32F426FBP7) || \
+    defined (AT32F426CBU7)
 
     #define AT32F426xB
 #endif
 
 #if defined (AT32F426C8T7)   || defined (AT32F426K8T7)   || defined (AT32F426K8U7) || \
-    defined (AT32F426K8U7_4) || defined (AT32F426G8U7_4) || defined (AT32F426F8P7)
+    defined (AT32F426K8U7_4) || defined (AT32F426G8U7_4) || defined (AT32F426F8P7) || \
+    defined (AT32F426C8U7)
 
     #define AT32F426x8
 #endif
@@ -170,7 +181,7 @@ extern "C" {
   */
 #define __AT32F422_426_LIBRARY_VERSION_MAJOR    (0x02) /*!< [31:24] major version */
 #define __AT32F422_426_LIBRARY_VERSION_MIDDLE   (0x00) /*!< [23:16] middle version */
-#define __AT32F422_426_LIBRARY_VERSION_MINOR    (0x00) /*!< [15:8]  minor version */
+#define __AT32F422_426_LIBRARY_VERSION_MINOR    (0x01) /*!< [15:8]  minor version */
 #define __AT32F422_426_LIBRARY_VERSION_RC       (0x00) /*!< [7:0]  release candidate */
 #define __AT32F422_426_LIBRARY_VERSION          ((__AT32F422_426_LIBRARY_VERSION_MAJOR << 24)  | \
                                                  (__AT32F422_426_LIBRARY_VERSION_MIDDLE << 16) | \

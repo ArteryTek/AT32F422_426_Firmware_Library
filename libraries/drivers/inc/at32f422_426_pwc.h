@@ -3,7 +3,8 @@
   * @file     at32f422_426_pwc.h
   * @brief    at32f422_426 pwc header file
   **************************************************************************
-  *                       Copyright notice & Disclaimer
+  *
+  * Copyright (c) 2025, Artery Technology, All rights reserved.
   *
   * The software Board Support Package (BSP) that is made available to
   * download from Artery official website is the copyrighted work of Artery.
@@ -73,7 +74,6 @@ extern "C" {
   *         this parameter can be one of the following values:
   *         - PWC_LDO_OUTPUT_1V3: system clock up to 180MHz.
   *         - PWC_LDO_OUTPUT_1V2: system clock up to 150MHz.
-  *         - PWC_LDO_OUTPUT_1V1: system clock up to 100MHz.
   * @note   none.
   */
 #define pwc_ldo_output_voltage_set(val)  (PWC->ldoov_bit.ldoovsel = val)
@@ -101,7 +101,6 @@ typedef enum
   */
 typedef enum
 {
-  PWC_LDO_OUTPUT_1V1                     = 0x01, /*!< ldo output voltage is 1.1v */
   PWC_LDO_OUTPUT_1V2                     = 0x02, /*!< ldo output voltage is 1.2v */
   PWC_LDO_OUTPUT_1V3                     = 0x03  /*!< ldo output voltage is 1.3v */
 } pwc_ldo_output_voltage_type;

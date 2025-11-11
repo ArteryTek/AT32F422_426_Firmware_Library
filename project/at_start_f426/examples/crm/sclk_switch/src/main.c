@@ -3,7 +3,8 @@
   * @file     main.c
   * @brief    main program
   **************************************************************************
-  *                       Copyright notice & Disclaimer
+  *
+  * Copyright (c) 2025, Artery Technology, All rights reserved.
   *
   * The software Board Support Package (BSP) that is made available to
   * download from Artery official website is the copyrighted work of Artery.
@@ -115,7 +116,7 @@ static void sclk_64m_hick_config(void)
   crm_periph_clock_enable(CRM_PWC_PERIPH_CLOCK, TRUE);
 
   /* config ldo voltage */
-  pwc_ldo_output_voltage_set(PWC_LDO_OUTPUT_1V1);
+  pwc_ldo_output_voltage_set(PWC_LDO_OUTPUT_1V2);
 
   crm_clock_source_enable(CRM_CLOCK_SOURCE_HICK, TRUE);
 
@@ -201,7 +202,7 @@ static void sclk_96m_hext_config(void)
   crm_periph_clock_enable(CRM_PWC_PERIPH_CLOCK, TRUE);
 
   /* config ldo voltage */
-  pwc_ldo_output_voltage_set(PWC_LDO_OUTPUT_1V1);
+  pwc_ldo_output_voltage_set(PWC_LDO_OUTPUT_1V2);
 
   crm_clock_source_enable(CRM_CLOCK_SOURCE_HEXT, TRUE);
 
